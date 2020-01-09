@@ -4,15 +4,16 @@ from selenium.webdriver.common.action_chains import ActionChains
 import time
 import os
 from selenium.webdriver.common.by import By
-
+import selenium.common.exceptions
 
 def igram_scrap(username=[], tag=[], max_comments=12, post_no=0):
-    # set up chromedriver
+    # append all the username and tags to get the links which we will use to get the url of the page
     handle = []
     for x in username:
         handle.append(x)
     for x in tag:
         handle.append(str('explore/tags/' + x))
+    # set up chromedriver
     chromedriver = "D:/chromedriver"
     os.environ["webdriver.chrome.driver"] = chromedriver
     driver = webdriver.Chrome(chromedriver)
@@ -33,15 +34,17 @@ def igram_scrap(username=[], tag=[], max_comments=12, post_no=0):
         while max_count > click_count:
             try:
                 load_more = driver.find_element_by_css_selector(
-                    "#react-root > section > main > div > div > article > div.eo2As > div.EtaWk > ul > li > div > button")
-                # actions.move_to_element(load_more).perform()
+                    "#react-root > section > main > div > div > article > div.eo2As > div.EtaWk > ul > li > div > button")           
                 load_more.click()
                 click_count += 1
                 time.sleep(1)
+         #If the button to get more functions is not loaded ,  wait for some more time
+            except selenium.StaleElementReferenceException:
+                time.sleep(5)
+          # If element comments got over or some other error like browser closed, page not found etc
             except Exception as e:
                 print(e)
                 break
-
         print(
             "final click count: " + str(click_count) + "; should yield roughly " + str(click_count * 12) + " comments")
         comments = driver.find_elements_by_class_name("C4VMK")
@@ -61,4 +64,9 @@ def igram_scrap(username=[], tag=[], max_comments=12, post_no=0):
         df.to_csv(str(x + ".csv"), index=False)
 
 
-igram_scrap(username=['narendramodi', 'realdonaldtrump'],  max_comments=24, post_no=1)
+igram_scrap(username=[], # Enter list of Usernames you want to explore their comments
+            tag=[], # Tags if you want to explore
+            max_comments=20, # Max comments you want to obtain
+            post_no= # The post no. from the recent post you want ..starts with 0
+           ) 
+
