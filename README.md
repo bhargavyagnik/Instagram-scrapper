@@ -35,7 +35,9 @@ Once the path for the button is obtained , we just apply a click action on the b
 ``` python
 def igram_scrap(username=[], tag=[], max_comments=12, post_no=0):
 ```
- takes the list of usernames you want to scrap, tags you want to scrap, max comments ( keep the upper limit as it runs in a try except block..no error will occur if no. of comments are lesser than that) and the Post no.  basically starting with 0 and till n. 
+**- Takes the list of usernames you want to scrap
+- Tags you want to scrap **
+**- Max comments ( keep the upper limit as it runs in a try except block..no error will occur if no. of comments are lesser than that) - - Post no.  basically starting with 0 and till n. **
  
 The project is still in development and one can take a list of desired posts, etc permutations, but i hope you enjoy the usage of amaznig project.
 
