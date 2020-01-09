@@ -61,5 +61,5 @@ def igram_scrap(username=[], tag=[], max_comments=12, post_no=0):
         df.to_csv(str(x + ".csv"), index=False)
 
 
-igram_scrap(username=['narendramodi'],  max_comments=2000, post_no=0)
+igram_scrap(username=['narendramodi'],  max_comments=2000, post_no=1)
 
