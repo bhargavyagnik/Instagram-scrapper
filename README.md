@@ -29,3 +29,19 @@ Now it comes to a difficult part that is much more complex for a pythongeek whil
 As instagram shows multiple of 12 comments at a time , you'll find out 12 in many snippets of the code . So we need to click button with the class *"#react-root > section > main > div > div > article > div.eo2As > div.EtaWk > ul > li > div > button"* we'll search it using css selector . There are various selector you can find out in the documentation of selenium , you may fiddle with it and try different options and get the class names in Inspect element of the browser
 
 ![](https://s3-ap-south-1.amazonaws.com/av-blog-media/wp-content/uploads/2019/05/Web-Scraping-selenium.png)
+
+Once the path for the button is obtained , we just apply a click action on the button and hence load more comments. Delay time depends on your internet speed and ping. So we kept ideal 1 sec or you can increase it if you have slower internet.
+
+``` python
+def igram_scrap(username=[], tag=[], max_comments=12, post_no=0):
+```
+ takes the list of usernames you want to scrap, tags you want to scrap, max comments ( keep the upper limit as it runs in a try except block..no error will occur if no. of comments are lesser than that) and the Post no.  basically starting with 0 and till n. 
+ 
+The project is still in development and one can take a list of desired posts, etc permutations, but i hope you enjoy the usage of amaznig project.
+
+The final comments will be printed in the console as well as that would be saved in **.csv** format with respective usernames. 
+
+The usage of this scrapper is to get Instagram comments can be done for -
+- [x]
+- []saav
+- []savas
