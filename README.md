@@ -42,6 +42,8 @@ The project is still in development and one can take a list of desired posts, et
 The final comments will be printed in the console as well as that would be saved in **.csv** format with respective usernames. 
 
 The usage of this scrapper is to get Instagram comments can be done for -
-- [X]For finding Support to Political leaders and can be done to perdict if the people will vote him in the next election or not
-- []For blocking such comments by Instagram to Prevent Abuse on Social Media
-- []Predicting types of comments etc
+- For finding Support to Political leaders and can be done to perdict if the people will vote him in the next election or not
+- Predicting Movie Reviews, earnings etc
+- For blocking such comments by Instagram to Prevent Abuse on Social Media
+- Predicting types of comments etc
+
