@@ -23,7 +23,7 @@ driver = webdriver.Chrome(chromedriver)
 driver.get("https://github.com/bhargavyagnik")
 ```
 
-This will open the browser and load the following link.
+This will open the browser and load the following link...
 Now it comes to a difficult part that is much more complex for a pythongeek while here comes a part of a web developer to get the post classes and get its addresses and click buttons etc...
 
 As instagram shows multiple of 12 comments at a time , you'll find out 12 in many snippets of the code . So we need to click button with the class *"#react-root > section > main > div > div > article > div.eo2As > div.EtaWk > ul > li > div > button"* we'll search it using css selector . There are various selector you can find out in the documentation of selenium , you may fiddle with it and try different options and get the class names in Inspect element of the browser
