@@ -5,43 +5,68 @@ import time
 import os
 from selenium.webdriver.common.by import By
 import selenium.common.exceptions
+from selenium.webdriver.common.keys import Keys
+
+def login():
+    url = "https://www.instagram.com/"
+
+    driver.get(url)
+
+    time.sleep(3)  # Waiting 3 seconds after we open the page.
+
+    # Login element
+    login = driver.find_element_by_xpath("//*[@id='react-root']/section/main/article/div[2]/div[2]/p/a")
+    login.click()
+    time.sleep(2)
+
+    username = driver.find_element_by_name("username")
+    username.send_keys("Insta_Username")
+
+    password = driver.find_element_by_name("password")
+    password.send_keys("Insta_password####")
+
+    # Logging in Instagram through our password and surname which is saved under loginInfo.py file.
+    login_button = driver.find_element_by_xpath(
+        "/html/body/div[1]/section/main/div/article/div/div[1]/div/form/div[4]/button")
+    login_button.click()
+    time.sleep(2)
+
 
 def igram_scrap(username=[], tag=[], max_comments=12, post_no=0):
-    # append all the username and tags to get the links which we will use to get the url of the page
+    # set up chromedriver
     handle = []
     for x in username:
         handle.append(x)
     for x in tag:
         handle.append(str('explore/tags/' + x))
-    # set up chromedriver
-    chromedriver = "D:/chromedriver"
-    os.environ["webdriver.chrome.driver"] = chromedriver
-    driver = webdriver.Chrome(chromedriver)
-    actions = ActionChains(driver)
+    if post_no>14:
+        login()
     for x in handle:
         base_url = "https://www.instagram.com/"
         handle = x
 
         driver.get(base_url + handle)
-
-        images = driver.find_elements_by_class_name("_bz0w")
-        image_curr = images[post_no].find_element_by_tag_name("a").get_attribute("href")
-        driver.get(image_curr)  # go to first picture
-
+        got=True
+        while got:
+            try:
+                images = driver.find_elements_by_class_name("_bz0w")
+                image_curr = images[post_no].find_element_by_tag_name("a").get_attribute("href")
+                driver.get(image_curr)  # go to first picture
+                got=False
+            except Exception as e:
+                driver.find_element_by_tag_name('body').send_keys(Keys.END)
         click_count = 0
         max_count = max_comments / 12
 
         while max_count > click_count:
             try:
                 load_more = driver.find_element_by_css_selector(
-                    "#react-root > section > main > div > div > article > div.eo2As > div.EtaWk > ul > li > div > button")           
+                    "#react-root > section > main > div > div > article > div.eo2As > div.EtaWk > ul > li > div > button")
                 load_more.click()
                 click_count += 1
                 time.sleep(1)
-         #If the button to get more functions is not loaded ,  wait for some more time
-            except selenium.StaleElementReferenceException:
-                time.sleep(5)
-          # If element comments got over or some other error like browser closed, page not found etc
+            except selenium.common.exceptions.StaleElementReferenceException:
+                time.sleep(7)
             except Exception as e:
                 print(e)
                 break
@@ -63,10 +88,8 @@ def igram_scrap(username=[], tag=[], max_comments=12, post_no=0):
             x = x.replace('explore/tags/', '')
         df.to_csv(str(x + ".csv"), index=False)
 
-
-igram_scrap(username=[], # Enter list of Usernames you want to explore their comments
-            tag=[], # Tags if you want to explore
-            max_comments=20, # Max comments you want to obtain
-            post_no= # The post no. from the recent post you want ..starts with 0
-           ) 
+chromedriver = "D:/chromedriver"
+os.environ["webdriver.chrome.driver"] = chromedriver
+driver = webdriver.Chrome(chromedriver)
+igram_scrap(username=['narendramodi'],  max_comments=200, post_no=20)
 
