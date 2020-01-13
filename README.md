@@ -1,6 +1,5 @@
 # Instagram-comment-scrapper-using-python
 
-![](https://lh3.googleusercontent.com/LZdsQGEbRqcZIjvWdiJTjlaGQJQjP097FAIvl4XfOi_XHagmC83Lc04PDxaq8Ml6xJk)
 
 While gathering Data from various social Media sites for my project in NLP, i found out that what my project aimed for, should target the audience on Instagram and hence I and my Friend Mohammed @github.com/momo1606 found out an amazing article on Medium that had solved this problem using Selenium and Beautiful Soup. So we reffered it and modified it to your best use for Instagram Scrapping.
 
