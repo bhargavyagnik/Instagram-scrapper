@@ -27,7 +27,6 @@ Now it comes to a difficult part that is much more complex for a pythongeek whil
 
 As instagram shows multiple of 12 comments at a time , you'll find out 12 in many snippets of the code . So we need to click button with the class *"#react-root > section > main > div > div > article > div.eo2As > div.EtaWk > ul > li > div > button"* we'll search it using css selector . There are various selector you can find out in the documentation of selenium , you may fiddle with it and try different options and get the class names in Inspect element of the browser
 
-![](https://s3-ap-south-1.amazonaws.com/av-blog-media/wp-content/uploads/2019/05/Web-Scraping-selenium.png)
 
 Once the path for the button is obtained , we just apply a click action on the button and hence load more comments. Delay time depends on your internet speed and ping. So we kept ideal 1 sec or you can increase it if you have slower internet.
 
