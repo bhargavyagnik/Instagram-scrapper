@@ -39,7 +39,7 @@ def igram_scrap(username=[], tag=[], max_comments=12, post_no=0):
 - Input Post no.  basically starting with 0(most recent post) and till n. 
  
  
-The project is still in development and one can take a list of desired posts, etc permutations, but i hope you enjoy the usage of amaznig project.
+The project is still in development and one can take a list of desired posts, etc permutations, but i hope you enjoy the usage of amaznig project./..
 
 The final comments will be printed in the console as well as that would be saved in **.csv** format with respective usernames. 
 
