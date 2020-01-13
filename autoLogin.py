@@ -17,10 +17,10 @@ login.click()
 time.sleep(2)
 
 username = browser.find_element_by_name("username")
-username.send_keys("yagnikbhargav")
+username.send_keys("Username")
 
 password = browser.find_element_by_name("password")
-password.send_keys("bhargavyagnik13111999")
+password.send_keys("Your_Password")
 
 # Logging in Instagram through our password and surname which is saved under loginInfo.py file.
 login_button = browser.find_element_by_xpath(
