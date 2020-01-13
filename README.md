@@ -49,5 +49,5 @@ The usage of this scrapper is to get Instagram comments and use for -
 - For blocking such comments by Instagram to Prevent Abuse on Social Media
 - Predicting types of comments etc
 
-Update- Scroll with no max. limit
+Update- Scroll with no max. limit. i.e you can get more posts no limited to 14 and time is reduced to a great extent
 
