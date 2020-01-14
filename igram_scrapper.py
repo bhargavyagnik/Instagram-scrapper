@@ -6,6 +6,7 @@ import os
 from selenium.webdriver.common.by import By
 import selenium.common.exceptions
 from selenium.webdriver.common.keys import Keys
+import credentials
 
 def login():
     url = "https://www.instagram.com/"
@@ -20,10 +21,10 @@ def login():
     time.sleep(2)
 
     username = driver.find_element_by_name("username")
-    username.send_keys("Insta_Username")
+    username.send_keys(credentials.username)
 
     password = driver.find_element_by_name("password")
-    password.send_keys("Insta_password####")
+    password.send_keys(credentials.password)
 
     # Logging in Instagram through our password and surname which is saved under loginInfo.py file.
     login_button = driver.find_element_by_xpath(
@@ -39,8 +40,6 @@ def igram_scrap(username=[], tag=[], max_comments=12, post_no=0):
         handle.append(x)
     for x in tag:
         handle.append(str('explore/tags/' + x))
-    if post_no>14:
-        login()
     for x in handle:
         base_url = "https://www.instagram.com/"
         handle = x
@@ -51,7 +50,7 @@ def igram_scrap(username=[], tag=[], max_comments=12, post_no=0):
             try:
                 images = driver.find_elements_by_class_name("_bz0w")
                 image_curr = images[post_no].find_element_by_tag_name("a").get_attribute("href")
-                driver.get(image_curr)  # go to first picture
+                driver.get(image_curr)
                 got=False
             except Exception as e:
                 driver.find_element_by_tag_name('body').send_keys(Keys.END)
@@ -86,10 +85,16 @@ def igram_scrap(username=[], tag=[], max_comments=12, post_no=0):
         df = pd.DataFrame({"user": users_list, "comment": comments_list})
         if 'explore/tags/' in x:
             x = x.replace('explore/tags/', '')
-        df.to_csv(str(x + ".csv"), index=False)
+        df.to_csv(str(x +"_"+str(post_no)+".csv"), index=False)
 
 chromedriver = "D:/chromedriver"
 os.environ["webdriver.chrome.driver"] = chromedriver
 driver = webdriver.Chrome(chromedriver)
-igram_scrap(username=['narendramodi'],  max_comments=200, post_no=20)
+login()
+#For Multiple posts from same account 
+for i in range(45,100):
+    igram_scrap(username=['brut.india'], max_comments=1000, post_no=i)
+    
+#For single post
+igram_scrap(username=['brut.india'],  max_comments=1000, post_no=6)
 
