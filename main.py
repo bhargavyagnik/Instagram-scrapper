@@ -52,6 +52,6 @@ class InstagramBot:
             time.sleep(3)
 
 
-i=InstagramBot(email="bhukkhads_of_india",password="Bjty@906")
+i=InstagramBot(email="#######",password="#####")
 i.login()
 i.follow()
