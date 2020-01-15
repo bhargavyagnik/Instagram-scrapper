@@ -51,3 +51,6 @@ The usage of this scrapper is to get Instagram comments and use for -
 
 Update- Scroll with no max. limit. i.e you can get more posts no limited to 14 and time is reduced to a great extent
 
+* Update
+Now you can find a auto-follower bot in the main.py 
+
